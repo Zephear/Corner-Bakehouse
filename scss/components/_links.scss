@@ -1,0 +1,26 @@
+.link {
+  margin-top: 16px;
+  color: var(--text-white);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.link:hover {
+  color: var(--text-green);
+}
+.footer-link {
+  margin-top: 16px;
+  font-weight: 300;
+  font-size: 16px;
+  text-decoration: none;
+  color: var(--text-white);
+  transition: color 0.3s;
+}
+.footer-link:hover {
+  color: var(--text-green);
+}
+.form-terms-link {
+  color: var(--text-brown);
+  cursor: pointer;
+  text-decoration-color: var(--text-brown);
+  text-underline-offset: 2px;
+}

@@ -1,0 +1,147 @@
+.footer-section {
+  padding: 32px 0;
+  position: relative;
+  background-color: var(--text-brown);
+  background-image: url("../style/figures/footer2.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    background-repeat: no-repeat;
+    bottom: 0;
+  }
+
+  &::before {
+    width: 180px;
+    height: 120px;
+    left: 0;
+    background-image: url("../style/figures/smaller-bread.png");
+  }
+
+  &::after {
+    width: 380px;
+    height: 185px;
+    right: 0;
+    background-image: url("../style/figures/bigger-bread.png");
+  }
+}
+
+.footer-container {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-nav,
+.footer-address {
+  flex-basis: 50%;
+  display: flex;
+  gap: 166px;
+}
+
+.footer-logo {
+  display: inline-block;
+}
+
+.footer-menu {
+  flex-grow: 1;
+}
+
+.footer-address {
+  .address-list,
+  .address-info {
+    flex-grow: 1;
+  }
+}
+
+.address-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.address-info {
+  .data-serv {
+    color: var(--light-brown);
+    font-weight: 400;
+    font-size: 14px;
+    margin-bottom: 0;
+  }
+}
+
+.social {
+  margin-top: 16px;
+  display: flex;
+  gap: 22px;
+  flex-direction: row;
+}
+
+.address-social {
+  fill: var(--text-white);
+  transition: fill 0.3s;
+
+  &:hover {
+    fill: var(--text-green);
+  }
+}
+
+@media screen and (max-width: $bp-desktop) {
+  .footer-section {
+    overflow: hidden;
+
+    &::before {
+      width: 100px;
+      height: 70px;
+      background-size: contain;
+      background-position: left bottom;
+    }
+
+    &::after {
+      width: 120px;
+      height: 100px;
+      background-size: contain;
+      background-position: right bottom;
+    }
+  }
+
+  .footer-container {
+    position: relative;
+    z-index: 1; // текст над хлібчиками
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    text-align: center;
+  }
+
+  .footer-nav,
+  .footer-address {
+    flex-basis: auto; // 50% у колонці рахувалось би по висоті
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .footer-menu,
+  .address-list {
+    flex-grow: 0;
+    align-items: center;
+    gap: 24px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .footer-address {
+    .address-list,
+    .address-info {
+      flex-grow: 0;
+    }
+  }
+
+  .social {
+    justify-content: center;
+    margin-top: 0;
+  }
+}

@@ -1,0 +1,58 @@
+.button {
+  background-color: var(--text-green);
+  color: var(--text-white);
+  border-radius: 8px;
+  border: 2px solid var(--text-green);
+  font-weight: 600;
+  padding: 16px 32px;
+  font-family: "Poppins", sans-serif;
+  transition: 0.3s;
+}
+.button:hover {
+  background-color: transparent;
+  color: var(--text-hover);
+  cursor: pointer;
+}
+.form-button {
+  display: block;
+  margin: 0 auto 24px;
+}
+.carousel-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px solid var(--text-brown);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.carousel-button:hover {
+  background-color: var(--text-brown);
+}
+.carousel-button:hover .carousel-icon {
+  fill: var(--text-white);
+}
+.carousel-button.next {
+  transform: rotate(180deg);
+}
+.modal-btn-close {
+  display: flex;
+  width: 16px;
+  height: 16px;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--text-brown); 
+  transition: 0.3s;
+}
+
+.modal-btn-close:hover,
+.modal-btn-close:focus {
+  color: var(--dark-green); 
+}

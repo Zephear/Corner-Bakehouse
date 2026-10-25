@@ -1,0 +1,33 @@
+.advantages-section {
+  padding: 16px 0;
+
+  @media screen and (min-width: $bp-desktop) {
+    background-color: var(--text-green);
+  }
+
+  &__item {
+    font-size: 14px;
+
+    @media screen and (min-width: $bp-desktop) {
+      font-size: 20px;
+      color: var(--text-brown);
+    }
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background-color: var(--line-light);
+    border-radius: 24px;
+    padding: 24px 40px;
+
+    @media screen and (min-width: $bp-desktop) {
+      gap: 40px;
+      flex-direction: row;
+      justify-content: space-between;
+      background-color: transparent;
+      border-radius: 0;
+      padding: 0;
+    }
+  }
+}
