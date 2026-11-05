@@ -9,7 +9,8 @@
   justify-content: center;
   align-items: center;
   transition: opacity 0.3s, visibility 0.3s;
-  padding: 20px 0;
+  padding: 20px; // Додано padding для backdrop, щоб модалка не торкалася країв екрана
+  z-index: 999;
 
   &.is-hidden {
     opacity: 0;
@@ -20,27 +21,33 @@
 
 .modal {
   position: relative;
-
   width: 100%;
   max-width: 880px;
-  height: 100%;
-  max-height: 880px;
-  padding: 48px;
+  height: auto; // Автоматична висота відповідно до контенту
+  max-height: calc(100vh - 40px); // Не дає модалці вийти за межі екрана
+  padding: 24px; // Базовий (мобільний) padding
   background-color: var(--text-white);
   border-radius: 32px;
   box-sizing: border-box;
-  overflow-y: auto;
+  overflow-y: auto; // Скрол з'явиться тільки якщо контент фізично не влазить у 100vh
 
-  @media screen and (max-width: $bp-tablet) {
-    padding: 128px;
+  // Збільшуємо padding для планшетів та десктопів
+  @media screen and (min-width: 768px) { 
+    padding: 48px;
   }
 
   &-btn-close {
     position: absolute;
-    top: 40px;
-    right: 40px;
+    top: 20px;
+    right: 20px;
+
+    @media screen and (min-width: 768px) {
+      top: 40px;
+      right: 40px;
+    }
   }
 
+  // Приховуємо декоративні картинки на мобільних пристроях
   &::before,
   &::after {
     content: "";
@@ -49,6 +56,11 @@
     background-repeat: no-repeat;
     background-position: center;
     pointer-events: none;
+    display: none; 
+
+    @media screen and (min-width: 768px) {
+      display: block; // Показуємо тільки на більших екранах
+    }
   }
 
   &::before {
@@ -56,7 +68,7 @@
     right: 25px;
     width: 138px;
     height: 138px;
-    background-image: url("../style/figures/round-text-modal.png"); /* Шлях до тексту */
+    background-image: url("../style/figures/round-text-modal.png");
     z-index: 1;
   }
 
@@ -68,49 +80,41 @@
     background-image: url("../style/figures/modal-bread.png");
     z-index: 2;
   }
-} // ← .modal закривається тут
-
-// Усе нижче тепер глобальне і працює і в модальному вікні, і в секції контактів
-
-.title-container {
-  &__container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
 }
 
 .modal-title {
   &__title {
-    font-size: 64px;
-    padding-top: 48px;
+    font-size: 32px; // Зменшений шрифт для мобільних
     font-weight: 900;
-    line-height: 1.5;
+    line-height: 1.2;
     text-align: center;
     margin-bottom: 16px;
+
+    @media screen and (min-width: 768px) {
+      font-size: 64px;
+      line-height: 1.5;
+    }
   }
 }
 
-.form-field {
-  margin-bottom: 32px;
-  position: relative;
-}
-
+/* Прибрано зайвий padding, щоб не дублювати відступи модального вікна */
 .contact-form-container {
-  padding: 48px;
+  padding: 0; 
+  width: 100%;
 }
 
-.form-label {
-  position: absolute;
-  top: 16px;
-  left: 42px;
+.form-field {
+  margin-bottom: 24px;
+  position: relative;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 32px;
+  }
 }
 
 .form-input {
   width: 100%;
-  padding: 16px 42px;
+  padding: 16px 24px;
   border: 1px solid var(--secondary-brown);
   border-radius: 8px;
   background-color: transparent;
@@ -138,5 +142,5 @@
   line-height: 1.5;
   font-weight: 500;
   max-width: 220px;
-  margin: 0 auto;
+  margin: 16px auto 0;
 }
